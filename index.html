@@ -132,10 +132,16 @@
 <script>
     (function () {
         window.onload = function () {
-            new BlipChat()
-            .withAppKey('ZmlhdHBlc3F1aXNhYXJnb2htZzozMGE0MDIxNC04NmJhLTQ3YWEtOTU4MS04MTlkNWZiZjE0M2E=')
+            var blipChat = new BlipChat();
+
+            blipChat.withAppKey('ZmlhdHBlc3F1aXNhYXJnb2htZzozMGE0MDIxNC04NmJhLTQ3YWEtOTU4MS04MTlkNWZiZjE0M2E=')
             .withButton({"color":"#EF3B5D","icon":"https://s3-sa-east-1.amazonaws.com/msging.net/Services/Images/6eb10c40-b5ed-4883-8993-16971ed2f9f1"})
+            .withEventHandler(BlipChat.LOAD_EVENT, function () {
+                console.log('Send message');
+                blipChat.sendMessage('Começar');
+            })            
             .build();
+            
         }
     })();
 </script>
