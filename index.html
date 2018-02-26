@@ -75,9 +75,11 @@
 			font-weight: 500;
 			font-size: 20px;
 		}
+
 		#card #card-cta{
 		    background-color: #f03b5c;
-		    display: block;
+			display: block;
+			opacity: 0;
 		    padding: 14px;
 		    font-size: 20px;
 		    text-decoration: none;
@@ -85,10 +87,87 @@
 		    font-weight: 500;
 		    text-align: center;
 		}
+		.display-block{
+		}
 		#card #card-cta:hover{
 			cursor: pointer;
 			filter: brightness(85%);
 		}
+
+		/* 
+			Animations 
+		*/
+		.fade-in-bottom {
+			-webkit-animation: fade-in-bottom 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			        animation: fade-in-bottom 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+		}
+		@-webkit-keyframes fade-in-bottom {
+		  0% {
+		    -webkit-transform: translateY(100px);
+		            transform: translateY(100px);
+		    opacity: 0;
+		  }
+		  100% {
+		    -webkit-transform: translateY(0);
+		            transform: translateY(0);
+		    opacity: 1;
+		  }
+		}
+		@keyframes fade-in-bottom {
+		  0% {
+		    -webkit-transform: translateY(50px);
+		            transform: translateY(50px);
+		    opacity: 0;
+		  }
+  		  50% {
+		    -webkit-transform: translateY(50px);
+		            transform: translateY(50px);
+		    opacity: 0;
+		  }
+		  100% {
+		    -webkit-transform: translateY(0);
+		            transform: translateY(0);
+		    opacity: 1;
+		  }
+		}
+
+		.swing-in-bottom-fwd {
+			-webkit-animation: swing-in-bottom-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+			        animation: swing-in-bottom-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+		}
+		@-webkit-keyframes swing-in-bottom-fwd {
+		  0% {
+		    -webkit-transform: rotateX(100deg);
+		            transform: rotateX(100deg);
+		    -webkit-transform-origin: bottom;
+		            transform-origin: bottom;
+		    opacity: 0;
+		  }
+		  100% {
+		    -webkit-transform: rotateX(0);
+		            transform: rotateX(0);
+		    -webkit-transform-origin: bottom;
+		            transform-origin: bottom;
+		    opacity: 1;
+		  }
+		}
+		@keyframes swing-in-bottom-fwd {
+		  0% {
+		    -webkit-transform: rotateX(100deg);
+		            transform: rotateX(100deg);
+		    -webkit-transform-origin: bottom;
+		            transform-origin: bottom;
+		    opacity: 0;
+		  }
+		  100% {
+		    -webkit-transform: rotateX(0);
+		            transform: rotateX(0);
+		    -webkit-transform-origin: bottom;
+		            transform-origin: bottom;
+		    opacity: 1;
+		  }
+		}
+
 	</style>
 </head>
 <body>
@@ -114,7 +193,7 @@
 			</div>
 		</header>
 		<div id="card-container">
-			<div id="card">
+			<div id="card" class="fade-in-bottom">
 				<div class="card-content">
 					<h1>
 						Olá, <span id="firstName">Renan!</span>
@@ -137,21 +216,28 @@
             blipChat.withAppKey('ZmlhdHBlc3F1aXNhYXJnb2htZzozMGE0MDIxNC04NmJhLTQ3YWEtOTU4MS04MTlkNWZiZjE0M2E=')
             .withButton({"color":"#EF3B5D","icon":"https://s3-sa-east-1.amazonaws.com/msging.net/Services/Images/6eb10c40-b5ed-4883-8993-16971ed2f9f1"})
             .withEventHandler(BlipChat.LOAD_EVENT, function () {
-                console.log('Send message');
                 blipChat.sendMessage('Começar');
             })            
             .build();
-            
+
+
+            window.addEventListener('message', function(message) {
+			    if(message.data.code === 'RequestCookie') { // when chat bubble is ready
+					showCTA()	    	
+			    }
+			})
         }
     })();
-</script>
-<script>
-function openBlipChat() {
- 
-	var card_cta = document.getElementById("blip-chat-open-iframe");
-	card_cta.click();
-}
+	
 
+	var showCTA = function () {
+		document.getElementById("card-cta").classList.add("swing-in-bottom-fwd");
+	}
+	var openBlipChat = function () {
+	 
+		var blipChat = document.getElementById("blip-chat-open-iframe");
+		blipChat.click();
+	}
 </script>
 </body>
 </html>
