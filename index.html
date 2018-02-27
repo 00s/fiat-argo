@@ -78,7 +78,7 @@
 
 		#card #card-cta{
 			height: 20px;
-		    background-color: #f03b5c;
+		    background-color: #ababab;
 			display: block;
 		    padding: 14px;
 		    font-size: 20px;
@@ -86,12 +86,20 @@
 		    color: white;
 		    font-weight: 500;
 		    text-align: center;
+		    pointer-events: none;
 		}
-		.display-block{
-		}
+
 		#card #card-cta:hover{
-			cursor: pointer;
-			filter: brightness(85%);
+  			cursor: default;
+		}
+
+		.card-active{
+			background-color: #f03b5c !important;
+			pointer-events: auto !important;
+		}
+		.card-active:hover{
+			cursor: pointer !important;
+			filter: brightness(85%) !important;
 		}
 
 		/* 
@@ -281,12 +289,13 @@
 	
 
 	var showCTA = function () {
-		var card_cta = document.getElementById("card-cta")
-		var spinner = card_cta.getElementsByTagName('div')[0];
-		spinner.add("hide");
-		// var start = card_cta.getElementsByTagName('div')[1];
-		// start.classList.add("swing-in-bottom-fwd");
-	}
+		var card_cta = document.getElementById("card-cta");
+		card_cta.classList.add("card-active")
+        var cardSpinner = document.getElementById("cta-spinner");
+        cardSpinner.classList.add("hide");
+        var cardStart = document.getElementById('get-started');
+        cardStart.classList.remove("hide");
+    }
 	var openBlipChat = function () {
 	 
 		var blipChat = document.getElementById("blip-chat-open-iframe");
