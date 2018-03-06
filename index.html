@@ -29,7 +29,7 @@
 			font-weight: 300;
 		}
 		#capaign-container{
-			background-image: url("img/argo-vermelho-modena.png");
+			/*background-image: url("img/argo-vermelho-modena.png");*/
 			background-color: #ECEEF6;
 			background-repeat: no-repeat;
 			background-size: auto 100vh;
@@ -38,7 +38,28 @@
 			position: absolute; 
 			height: 100%; 
 			width: 100%;
+		    overflow: hidden;
 		}
+
+		#background-contents{
+		   position: absolute;
+		   height: 100vh;
+		   top: 0;
+		   left: 0;  width: 100vw;
+		   background: linear-gradient(#ECEEF6 64.99%, #DEE0EA 65%, #E5E5E5);
+		}
+		.img-container{
+			height: 100%;
+		}
+		#fiat-argo{
+			max-height: 600px;
+			position: absolute;
+			bottom: 15%;
+			left: 15%;
+			-webkit-filter: drop-shadow(0px 13px 10px #555);
+  			filter: drop-shadow(0px 13px 10px #555);
+  		}
+
 		#card-container{
 			display: table-cell; 
 			vertical-align: middle;
@@ -268,6 +289,11 @@
 <body>
 	<div id="capaign-container">
 		<div id="blipchat-container" class="chat-container"></div>
+		<div id="background-contents">
+			<div class="img-container">
+				<img src="img/argo-vermelho-modena.png" alt="" id="fiat-argo">
+			</div>
+		</div>
 		<header>
 			<div id="fiat-logo">
 				<svg id="fiat-logo" width="80" height="60" viewBox="0 0 80 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
