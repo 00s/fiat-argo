@@ -87,12 +87,32 @@
 			right: 80px;
 		}
 
+
+		/* WIDTH RULES */
 		@media (max-width: 640px) {
 			.chat-container{
 				bottom: 20px;
 				right: 20px;
 			}
 		}
+
+		@media (max-width: 1080px) {
+			#card{
+				margin: 0 auto !important;
+			}
+		}
+
+		@media (max-width: 800px) {
+			#card-container{
+			    height: 100%;
+			    max-width: 100%; 
+			    width: 100vw;
+			    float: initial;
+			    position: absolute;
+			    margin: 0 auto ;
+			}
+		}
+
 		@media (max-width: 500px) {
 			.chat-container{
 				bottom: 0;
@@ -104,12 +124,18 @@
 				max-height: calc(100%) !important;
 			}
 		}
+
+
+
+
+		/* HEIGTH RULES */
 		@media (max-height: 900px) {
 			.chat-container{
 				top: 60px;
 				height: calc(100% - 60px) !important;
 			}
 		}
+
 		@media (max-height: 665px) {
 			.chat-container{
 				top: 0;
@@ -375,9 +401,16 @@
 			</div>
 		</header>
 	</div>
-	<script src="https://unpkg.com/blip-chat-widget" type="text/javascript">
-</script>
-<script>
+	<script src="https://unpkg.com/blip-chat-widget" type="text/javascript"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115318935-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-115318935-1');
+	</script>
+<script async>
     (function () {
         window.onload = function () {
             var blipChat = new BlipChat();
@@ -413,6 +446,7 @@
 		var card = document.getElementById("card");
 		card.classList.remove("fade-in-bottom");
 		card.classList.add("fade-out-top");
+		gtag('send', 'event', 'Card', 'OpenChat');
 	}
 </script>
 </body>
