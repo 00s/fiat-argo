@@ -41,7 +41,7 @@
 		    overflow: hidden;
 		}
 
-		#background-contents{
+		#contents{
 		   position: absolute;
 		   height: 100vh;
 		   top: 0;
@@ -50,19 +50,21 @@
 		}
 		.img-container{
 			height: 100%;
+		    max-width: 600px;
+		    width: 60vw;
+    		float: left;
 		}
 		#fiat-argo{
 			max-height: 600px;
-			position: absolute;
-			bottom: 15%;
-			left: 15%;
-			-webkit-filter: drop-shadow(0px 13px 10px #555);
-  			filter: drop-shadow(0px 13px 10px #555);
+			position: relative;
+			top: calc(55% - 300px);
   		}
 
 		#card-container{
-			display: table-cell; 
-			vertical-align: middle;
+		    height: 100%;
+		    max-width: 400px;
+		    width: 40vw;
+		    float: left;
 		}
 		header{
 			position: absolute;
@@ -124,13 +126,20 @@
 			margin: 0 auto;
 		}
 		#card{
-			background-color: white;
+		    background-color: white;
+		    width: 270px;
+		    min-width: 270px;
+		    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+		    border-radius: 2px;
+		    font-family: Futura-pt;
+		    position: relative;
+		    top: calc(50vh - 100px);
+	        margin-left: calc(100% - 270px);
+		}
+		.contents-container{
+			max-width: 1000px;
+			height: 100vh;
 			margin: 0 auto;
-			width: 270px;
-			min-width: 270px;
-			box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-			border-radius: 2px;
-			font-family: Futura-pt;
 		}
 		#card .card-content{
 			padding: 42px 24px 28px;
@@ -284,16 +293,67 @@
 		    transform: scale(1.0);
 		  }
 		}
+
+		.slide-in-bck-center {
+			-webkit-animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+			        animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+		}
+		@-webkit-keyframes slide-in-bck-center {
+		  0% {
+		    -webkit-transform: translateZ(600px);
+		            transform: translateZ(600px);
+		    opacity: 0;
+		  }
+		  100% {
+		    -webkit-transform: translateZ(0);
+		            transform: translateZ(0);
+		    opacity: 1;
+		  }
+		}
+		@keyframes slide-in-bck-center {
+		  0% {
+		    -webkit-transform: translateZ(600px);
+		            transform: translateZ(600px);
+		    opacity: 0;
+		  }
+		  100% {
+		    -webkit-transform: translateZ(0);
+		            transform: translateZ(0);
+		    opacity: 1;
+		  }
+		}
 	</style>
 </head>
 <body>
 	<div id="capaign-container">
 		<div id="blipchat-container" class="chat-container"></div>
-		<div id="background-contents">
-			<div class="img-container">
-				<img src="img/argo-vermelho-modena.png" alt="" id="fiat-argo">
+		<section id="contents">
+			<div class="contents-container">
+				<div class="img-container ">
+					<img src="img/argo_precision_vermelho_alpine.png" alt="" id="fiat-argo" class="slide-in-bck-center ">
+				</div>
+				<div id="card-container">
+					<div id="card" class="fade-in-bottom">
+						<div class="card-content">
+							<h1>
+								Olá, <span id="firstName">Renan!</span>
+							</h1>
+							<p>Está curtindo o seu Argo Novo?</p>
+						</div>
+						<a href="#" id="card-cta" onclick="openBlipChat()">
+							<div class="spinner" id="cta-spinner">
+							  <div class="bounce1"></div>
+							  <div class="bounce2"></div>
+							  <div class="bounce3"></div>
+							</div>
+							<span class="hide" id="get-started">
+								COMEÇAR
+							</span>
+						</a>
+					</div>
+				</div>
 			</div>
-		</div>
+		</section>
 		<header>
 			<div id="fiat-logo">
 				<svg id="fiat-logo" width="80" height="60" viewBox="0 0 80 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -314,26 +374,6 @@
 				</svg>
 			</div>
 		</header>
-		<div id="card-container">
-			<div id="card" class="fade-in-bottom">
-				<div class="card-content">
-					<h1>
-						Olá, <span id="firstName">Renan!</span>
-					</h1>
-					<p>Está curtindo o seu Argo Novo?</p>
-				</div>
-				<a href="#" id="card-cta" onclick="openBlipChat()">
-					<div class="spinner" id="cta-spinner">
-					  <div class="bounce1"></div>
-					  <div class="bounce2"></div>
-					  <div class="bounce3"></div>
-					</div>
-					<span class="hide" id="get-started">
-						COMEÇAR
-					</span>
-				</a>
-			</div>
-		</div>
 	</div>
 	<script src="https://unpkg.com/blip-chat-widget" type="text/javascript">
 </script>
