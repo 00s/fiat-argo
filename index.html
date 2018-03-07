@@ -401,9 +401,16 @@
 			</div>
 		</header>
 	</div>
-	<script src="https://unpkg.com/blip-chat-widget" type="text/javascript">
-</script>
-<script>
+	<script src="https://unpkg.com/blip-chat-widget" type="text/javascript"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115318935-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-115318935-1');
+	</script>
+<script async>
     (function () {
         window.onload = function () {
             var blipChat = new BlipChat();
@@ -439,6 +446,7 @@
 		var card = document.getElementById("card");
 		card.classList.remove("fade-in-bottom");
 		card.classList.add("fade-out-top");
+		gtag('send', 'event', 'Card', 'OpenChat');
 	}
 </script>
 </body>
