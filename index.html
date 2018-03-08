@@ -439,7 +439,11 @@
 		var card = document.getElementById("card");
 		card.classList.remove("fade-in-bottom");
 		card.classList.add("fade-out-top");
-		gtag('send', 'event', 'Card', 'OpenChat');
+		gtag('event', 'OpenChat', {
+		    'event_callback': function() {
+		        console.log("O chat foi aberto");
+		    }
+	    });
 	}
 </script>
 </body>
